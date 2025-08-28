@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Menu</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap');
-        
         :root {
             --primary-color: #3b82f6;
             --primary-dark: #2563eb;
             --primary-darker: #1e40af;
             --primary-light: rgba(59, 130, 246, 0.8);
             --primary-glow: rgba(59, 130, 246, 0.4);
-            --theme-name: 'Blue';
         }
 
         .theme-red {
@@ -22,7 +19,6 @@
             --primary-darker: #b91c1c;
             --primary-light: rgba(239, 68, 68, 0.8);
             --primary-glow: rgba(239, 68, 68, 0.4);
-            --theme-name: 'Red';
         }
 
         .theme-green {
@@ -31,7 +27,6 @@
             --primary-darker: #047857;
             --primary-light: rgba(16, 185, 129, 0.8);
             --primary-glow: rgba(16, 185, 129, 0.4);
-            --theme-name: 'Green';
         }
         
         * {
@@ -41,7 +36,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             background: #0a0a0a;
             color: #ffffff;
             overflow: hidden;
@@ -67,7 +62,7 @@
 
         .banner-text {
             font-size: 24px;
-            font-weight: 600;
+            font-weight: bold;
             color: white;
             text-align: center;
         }
@@ -86,7 +81,6 @@
         .player-info-panel {
             width: 200px;
             background: rgba(30, 30, 30, 0.85);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             padding: 12px;
@@ -99,7 +93,7 @@
 
         .player-info-header {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: bold;
             color: var(--primary-color);
             margin-bottom: 8px;
             text-align: center;
@@ -119,7 +113,7 @@
 
         .player-info-value {
             color: #ffffff;
-            font-weight: 500;
+            font-weight: bold;
         }
 
         .player-info-value.online {
@@ -155,7 +149,6 @@
         .search-container {
             width: 300px;
             background: rgba(30, 30, 30, 0.85);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             padding: 12px;
@@ -227,7 +220,6 @@
 
         .theme-selector-content {
             background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 24px;
@@ -236,7 +228,7 @@
 
         .theme-selector-title {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: bold;
             color: white;
             text-align: center;
             margin-bottom: 20px;
@@ -297,7 +289,7 @@
         .theme-name {
             font-size: 12px;
             color: #9ca3af;
-            font-weight: 500;
+            font-weight: normal;
         }
 
         .theme-option.active .theme-name {
@@ -312,7 +304,7 @@
             color: white;
             padding: 10px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -333,7 +325,7 @@
         }
 
         .menu-items {
-            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.15s ease;
         }
 
         .menu-item {
@@ -345,7 +337,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             height: 35px;
             position: relative;
             margin-bottom: 2px;
@@ -361,7 +353,7 @@
             background: var(--primary-light);
             border-color: var(--primary-color);
             color: white;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
         }
 
         .menu-item.selected::before {
@@ -377,7 +369,7 @@
 
         .menu-item-text {
             font-size: 13px;
-            font-weight: 400;
+            font-weight: normal;
             color: inherit;
         }
 
@@ -385,15 +377,10 @@
             color: #9ca3af;
             font-size: 14px;
             font-weight: bold;
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.4);
-            text-stroke: 0.5px rgba(255, 255, 255, 0.4);
         }
 
         .menu-item.selected .menu-item-arrow {
             color: white;
-            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.8);
-            text-stroke: 0.5px rgba(255, 255, 255, 0.8);
         }
 
         .menu-item.toggle {
@@ -407,7 +394,7 @@
             border-radius: 9px;
             position: relative;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -426,7 +413,7 @@
             height: 14px;
             background: white;
             border-radius: 50%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -435,20 +422,12 @@
             background: #f8fafc;
         }
 
-        .toggle-switch:hover {
-            transform: scale(1.05);
-        }
-
-        .toggle-switch:active {
-            transform: scale(0.95);
-        }
-
         .scrollbar-thumb {
             width: 6px;
             background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
             border-radius: 3px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: absolute;
             top: 0;
             box-shadow: 0 2px 8px var(--primary-glow);
@@ -460,7 +439,6 @@
 
         .menu-footer {
             background: rgba(22, 22, 22, 0.9);
-            backdrop-filter: blur(10px);
             padding: 8px 16px;
             display: flex;
             align-items: center;
@@ -479,13 +457,13 @@
             gap: 6px;
             font-size: 10px;
             color: #9ca3af;
-            font-weight: 400;
+            font-weight: normal;
         }
 
         .menu-page {
             font-size: 10px;
             color: #9ca3af;
-            font-weight: 400;
+            font-weight: normal;
         }
 
         .back-button {
@@ -520,7 +498,6 @@
             top: 20px;
             right: 20px;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.9) 100%);
-            backdrop-filter: blur(15px);
             color: white;
             padding: 16px 24px;
             border-radius: 12px;
@@ -528,10 +505,10 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-glow);
             transform: translateX(120%);
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.5s ease;
             z-index: 1000;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: bold;
             min-width: 200px;
             text-align: center;
         }
@@ -577,12 +554,12 @@
             </div>
 
             <div class="menu-container">
-                <button class="back-button" id="backButton" onclick="goBack()">←</button>
+                <button class="back-button" id="backButton">&larr;</button>
                 <div class="menu-section">Main menu</div>
                 
                 <div class="menu-body">
                     <div class="menu-items" id="menuItems">
-                        <!-- Main menu items will be populated by JavaScript -->
+                        <!-- Menu items will be populated by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -600,7 +577,7 @@
             </div>
             <div class="player-info-item">
                 <span class="player-info-label">Health</span>
-                <span class="player-info-value" id="playerHealth">200 🩸</span>
+                <span class="player-info-value" id="playerHealth">200</span>
             </div>
             <div class="player-info-item">
                 <span class="player-info-label">Armor</span>
@@ -660,17 +637,18 @@
     </div>
 
     <script>
-        let selectedIndex = 0;
-        let scrollOffset = 0;
-        let currentMenu = 'main';
-        let menuHistory = [];
-        let searchActive = false;
-        let currentTheme = 'blue';
-        const themes = ['blue', 'red', 'green'];
-        let currentThemeIndex = 0;
+        // Global variables
+        var selectedIndex = 0;
+        var scrollOffset = 0;
+        var currentMenu = 'main';
+        var menuHistory = [];
+        var searchActive = false;
+        var currentTheme = 'blue';
+        var themes = ['blue', 'red', 'green'];
+        var currentThemeIndex = 0;
         
-        // Menu data structure with proper page numbers and outlined emojis
-        const menuData = {
+        // Menu data structure
+        var menuData = {
             main: {
                 title: 'Main Menu',
                 pageNumber: 1,
@@ -683,7 +661,7 @@
                     { text: 'Visual', id: 'visual', type: 'submenu', arrow: '»' },
                     { text: 'Miscellaneous', id: 'misc', type: 'submenu', arrow: '»' },
                     { text: 'Settings', id: 'settings', type: 'submenu', arrow: '»' },
-                    { text: 'Search', id: 'search', type: 'action', arrow: '🔍︎' }
+                    { text: 'Search', id: 'search', type: 'action', arrow: 'S' }
                 ]
             },
             player: {
@@ -695,7 +673,7 @@
                     { text: 'Invisible', id: 'invisible', type: 'toggle', state: false },
                     { text: 'Never Wanted', id: 'neverwanted', type: 'toggle', state: false },
                     { text: 'Super Speed', id: 'superspeed', type: 'toggle', state: false },
-                    { text: 'Teleport to Waypoint', id: 'tpwaypoint', type: 'action', arrow: '→' },
+                    { text: 'Teleport to Waypoint', id: 'tpwaypoint', type: 'action', arrow: '->' },
                     { text: 'Noclip Mode', id: 'noclip', type: 'toggle', state: false },
                     { text: 'Infinite Stamina', id: 'infinitestamina', type: 'toggle', state: false },
                     { text: 'Fast Swim', id: 'fastswim', type: 'toggle', state: false },
@@ -707,8 +685,8 @@
                 pageNumber: 3,
                 items: [
                     { text: 'Player List', id: 'playerlist', type: 'submenu', arrow: '»' },
-                    { text: 'Kick Player', id: 'kickplayer', type: 'action', arrow: '☣︎' },
-                    { text: 'Ban Player', id: 'banplayer', type: 'action', arrow: '☣︎' },
+                    { text: 'Kick Player', id: 'kickplayer', type: 'action', arrow: 'X' },
+                    { text: 'Ban Player', id: 'banplayer', type: 'action', arrow: 'X' },
                     { text: 'Spectate Player', id: 'spectate', type: 'toggle', state: false }
                 ]
             },
@@ -716,18 +694,18 @@
                 title: 'Players Online',
                 pageNumber: 10,
                 items: [
-                    { text: 'CRQOLQVRQO', id: 'player1', type: 'player', arrow: '👤', data: { distance: '126.0m', serverId: '302902', health: '200 🩸', armor: '0', weapon: 'Unarmed', vehicle: 'Outside', alive: 'Alive', speed: '0km/h', friend: 'No' }},
-                    { text: 'PlayerTwo', id: 'player2', type: 'player', arrow: '👤', data: { distance: '45.2m', serverId: '123456', health: '150 🩸', armor: '50', weapon: 'Pistol', vehicle: 'Adder', alive: 'Alive', speed: '85km/h', friend: 'Yes' }},
-                    { text: 'GamerXYZ', id: 'player3', type: 'player', arrow: '👤', data: { distance: '203.7m', serverId: '789012', health: '0 🩸', armor: '0', weapon: 'None', vehicle: 'Outside', alive: 'Dead', speed: '0km/h', friend: 'No' }},
-                    { text: 'ProPlayer', id: 'player4', type: 'player', arrow: '👤', data: { distance: '89.1m', serverId: '456789', health: '180 🩸', armor: '75', weapon: 'Assault Rifle', vehicle: 'Zentorno', alive: 'Alive', speed: '120km/h', friend: 'No' }}
+                    { text: 'CRQOLQVRQO', id: 'player1', type: 'player', arrow: 'P', data: { distance: '126.0m', serverId: '302902', health: '200', armor: '0', weapon: 'Unarmed', vehicle: 'Outside', alive: 'Alive', speed: '0km/h', friend: 'No' }},
+                    { text: 'PlayerTwo', id: 'player2', type: 'player', arrow: 'P', data: { distance: '45.2m', serverId: '123456', health: '150', armor: '50', weapon: 'Pistol', vehicle: 'Adder', alive: 'Alive', speed: '85km/h', friend: 'Yes' }},
+                    { text: 'GamerXYZ', id: 'player3', type: 'player', arrow: 'P', data: { distance: '203.7m', serverId: '789012', health: '0', armor: '0', weapon: 'None', vehicle: 'Outside', alive: 'Dead', speed: '0km/h', friend: 'No' }},
+                    { text: 'ProPlayer', id: 'player4', type: 'player', arrow: 'P', data: { distance: '89.1m', serverId: '456789', health: '180', armor: '75', weapon: 'Assault Rifle', vehicle: 'Zentorno', alive: 'Alive', speed: '120km/h', friend: 'No' }}
                 ]
             },
             weapon: {
                 title: 'Weapon Options',
                 pageNumber: 4,
                 items: [
-                    { text: 'Give All Weapons', id: 'giveallweapons', type: 'action', arrow: '☣︎' },
-                    { text: 'Remove All Weapons', id: 'removeallweapons', type: 'action', arrow: '☣︎' },
+                    { text: 'Give All Weapons', id: 'giveallweapons', type: 'action', arrow: 'W' },
+                    { text: 'Remove All Weapons', id: 'removeallweapons', type: 'action', arrow: 'X' },
                     { text: 'Pistol', id: 'givepistol', type: 'action', arrow: '+' },
                     { text: 'Assault Rifle', id: 'giveassaultrifle', type: 'action', arrow: '+' },
                     { text: 'Sniper Rifle', id: 'givesniper', type: 'action', arrow: '+' },
@@ -745,16 +723,16 @@
                     { text: 'Super Jump', id: 'superjump', type: 'toggle', state: false },
                     { text: 'Fast Run', id: 'fastrun', type: 'toggle', state: false },
                     { text: 'Explosive Bullets', id: 'explosivebullets', type: 'toggle', state: false },
-                    { text: 'Kill All NPCs', id: 'killallnpcs', type: 'action', arrow: '☠︎︎' }
+                    { text: 'Kill All NPCs', id: 'killallnpcs', type: 'action', arrow: 'X' }
                 ]
             },
             vehicle: {
                 title: 'Vehicle Options',
                 pageNumber: 6,
                 items: [
-                    { text: 'Spawn Adder', id: 'spawnadder', type: 'action', arrow: '🏎️' },
-                    { text: 'Spawn Zentorno', id: 'spawnzentorno', type: 'action', arrow: '🏎️' },
-                    { text: 'Fix Vehicle', id: 'fixvehicle', type: 'action', arrow: '🔧' },
+                    { text: 'Spawn Adder', id: 'spawnadder', type: 'action', arrow: 'C' },
+                    { text: 'Spawn Zentorno', id: 'spawnzentorno', type: 'action', arrow: 'C' },
+                    { text: 'Fix Vehicle', id: 'fixvehicle', type: 'action', arrow: 'F' },
                     { text: 'Vehicle God Mode', id: 'vehiclegodmode', type: 'toggle', state: false },
                     { text: 'Infinite Fuel', id: 'infinitefuel', type: 'toggle', state: false }
                 ]
@@ -773,26 +751,55 @@
                 pageNumber: 8,
                 items: [
                     { text: 'Freeze Time', id: 'freezetime', type: 'toggle', state: false },
-                    { text: 'Change Weather', id: 'changeweather', type: 'action', arrow: '☁︎' }
+                    { text: 'Change Weather', id: 'changeweather', type: 'action', arrow: 'W' }
                 ]
             },
             settings: {
                 title: 'Settings',
                 pageNumber: 9,
                 items: [
-                    { text: 'Save Config', id: 'saveconfig', type: 'action', arrow: '🗁' },
-                    { text: 'Load Config', id: 'loadconfig', type: 'action', arrow: '🗁' },
-                    { text: 'Theme Color', id: 'themecolor', type: 'action', arrow: '✎' }
+                    { text: 'Save Config', id: 'saveconfig', type: 'action', arrow: 'S' },
+                    { text: 'Load Config', id: 'loadconfig', type: 'action', arrow: 'L' },
+                    { text: 'Theme Color', id: 'themecolor', type: 'action', arrow: 'T' }
                 ]
             }
         };
 
+        // DUI Message handler
+        window.addEventListener('message', function(event) {
+            console.log('Received message:', event.data);
+            try {
+                var data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+                handleLuaMessage(data);
+            } catch (e) {
+                console.error('Error parsing message:', e);
+            }
+        });
+
+        function handleLuaMessage(data) {
+            switch(data.action) {
+                case 'showMenu':
+                    console.log('Showing menu');
+                    break;
+                case 'hideMenu':
+                    console.log('Hiding menu');
+                    break;
+                case 'updateMenu':
+                    updateMenu(data.items, data.title);
+                    break;
+                case 'notification':
+                    showNotification(data.message, data.type);
+                    break;
+            }
+        }
+
         // Search functionality
         function getAllSearchableItems() {
-            const searchableItems = [];
+            var searchableItems = [];
             
             function addItems(menuId, menuName, items) {
-                items.forEach(item => {
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
                     if (item.type !== 'submenu' || !menuData[item.id]) {
                         searchableItems.push({
                             text: item.text,
@@ -800,49 +807,57 @@
                             type: item.type,
                             menuId: menuId,
                             menuName: menuName,
-                            path: menuId === 'main' ? item.text : `${menuName} > ${item.text}`
+                            path: menuId === 'main' ? item.text : menuName + ' > ' + item.text
                         });
                     }
-                });
+                }
             }
             
-            Object.keys(menuData).forEach(menuId => {
-                const menu = menuData[menuId];
+            var menuKeys = Object.keys(menuData);
+            for (var i = 0; i < menuKeys.length; i++) {
+                var menuId = menuKeys[i];
+                var menu = menuData[menuId];
                 addItems(menuId, menu.title, menu.items);
-            });
+            }
             
             return searchableItems;
         }
 
         function performSearch(query) {
+            var searchResults = document.getElementById('searchResults');
             if (!query.trim()) {
-                document.getElementById('searchResults').innerHTML = '';
+                searchResults.innerHTML = '';
                 return;
             }
 
-            const searchableItems = getAllSearchableItems();
-            const results = searchableItems.filter(item => 
-                item.text.toLowerCase().includes(query.toLowerCase())
-            ).slice(0, 10);
+            var searchableItems = getAllSearchableItems();
+            var results = [];
+            
+            for (var i = 0; i < searchableItems.length && results.length < 10; i++) {
+                if (searchableItems[i].text.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
+                    results.push(searchableItems[i]);
+                }
+            }
 
-            const searchResults = document.getElementById('searchResults');
             if (results.length === 0) {
                 searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
                 return;
             }
 
-            searchResults.innerHTML = results.map(result => `
-                <div class="search-result-item" onclick="navigateToSearchResult('${result.menuId}', '${result.id}')">
-                    <div>${result.text}</div>
-                    <div class="search-result-path">${result.path}</div>
-                </div>
-            `).join('');
+            var resultsHtml = '';
+            for (var i = 0; i < results.length; i++) {
+                var result = results[i];
+                resultsHtml += '<div class="search-result-item" onclick="navigateToSearchResult(\'' + result.menuId + '\', \'' + result.id + '\')">';
+                resultsHtml += '<div>' + result.text + '</div>';
+                resultsHtml += '<div class="search-result-path">' + result.path + '</div>';
+                resultsHtml += '</div>';
+            }
+            searchResults.innerHTML = resultsHtml;
         }
 
         function navigateToSearchResult(menuId, itemId) {
             hideSearch();
             
-            // Navigate to the menu containing the item
             if (menuId !== currentMenu) {
                 menuHistory = [];
                 if (menuId !== 'main') {
@@ -852,14 +867,20 @@
                 renderMenu(menuId);
             }
 
-            // Find and select the item
-            const menu = menuData[currentMenu];
-            const itemIndex = menu.items.findIndex(item => item.id === itemId);
+            var menu = menuData[currentMenu];
+            var itemIndex = -1;
+            for (var i = 0; i < menu.items.length; i++) {
+                if (menu.items[i].id === itemId) {
+                    itemIndex = i;
+                    break;
+                }
+            }
+            
             if (itemIndex !== -1) {
                 selectedIndex = itemIndex;
                 updateSelection();
                 updatePageIndicator();
-                showNotification(`Found: ${menu.items[itemIndex].text}`);
+                showNotification('Found: ' + menu.items[itemIndex].text);
             }
         }
 
@@ -884,7 +905,7 @@
                 currentThemeIndex = (currentThemeIndex + 1) % themes.length;
             }
             
-            const newTheme = themes[currentThemeIndex];
+            var newTheme = themes[currentThemeIndex];
             selectTheme(newTheme);
         }
 
@@ -897,16 +918,17 @@
             
             // Add selected theme class
             if (theme !== 'blue') {
-                document.body.classList.add(`theme-${theme}`);
+                document.body.classList.add('theme-' + theme);
             }
             
             // Update active theme option
-            document.querySelectorAll('.theme-option').forEach(option => {
-                option.classList.remove('active');
-            });
-            document.getElementById(`theme${theme.charAt(0).toUpperCase() + theme.slice(1)}`).classList.add('active');
+            var themeOptions = document.querySelectorAll('.theme-option');
+            for (var i = 0; i < themeOptions.length; i++) {
+                themeOptions[i].classList.remove('active');
+            }
+            document.getElementById('theme' + theme.charAt(0).toUpperCase() + theme.slice(1)).classList.add('active');
             
-            showNotification(`Theme: ${theme.charAt(0).toUpperCase() + theme.slice(1)}`);
+            showNotification('Theme: ' + theme.charAt(0).toUpperCase() + theme.slice(1));
         }
 
         function showThemeSelector() {
@@ -919,7 +941,7 @@
 
         // Player info display
         function showPlayerInfo(playerData) {
-            const panel = document.getElementById('playerInfoPanel');
+            var panel = document.getElementById('playerInfoPanel');
             
             document.getElementById('playerInfoName').textContent = playerData.text;
             document.getElementById('playerDistance').textContent = playerData.data.distance;
@@ -933,7 +955,7 @@
             document.getElementById('playerFriend').textContent = playerData.data.friend;
             
             // Update status colors
-            const aliveElement = document.getElementById('playerAlive');
+            var aliveElement = document.getElementById('playerAlive');
             aliveElement.className = 'player-info-value';
             if (playerData.data.alive === 'Alive') {
                 aliveElement.classList.add('online');
@@ -948,19 +970,18 @@
             document.getElementById('playerInfoPanel').classList.remove('visible');
         }
 
-        // Update page indicator based on current selection
         function updatePageIndicator() {
-            const menu = menuData[currentMenu];
-            const totalItems = menu.items.length;
-            const currentPosition = selectedIndex + 1;
+            var menu = menuData[currentMenu];
+            var totalItems = menu.items.length;
+            var currentPosition = selectedIndex + 1;
             
-            document.getElementById('pageIndicator').textContent = `${currentPosition} / ${totalItems}`;
+            document.getElementById('pageIndicator').textContent = currentPosition + ' / ' + totalItems;
         }
         
         function renderMenu(menuId) {
-            const menu = menuData[menuId];
-            const container = document.getElementById('menuItems');
-            const backButton = document.getElementById('backButton');
+            var menu = menuData[menuId];
+            var container = document.getElementById('menuItems');
+            var backButton = document.getElementById('backButton');
             
             container.innerHTML = '';
             
@@ -972,37 +993,42 @@
             }
             
             // Render menu items
-            menu.items.forEach((item, index) => {
-                const menuItem = document.createElement('div');
+            for (var i = 0; i < menu.items.length; i++) {
+                var item = menu.items[i];
+                var menuItem = document.createElement('div');
                 menuItem.className = 'menu-item';
-                if (index === selectedIndex) menuItem.classList.add('selected');
+                if (i === selectedIndex) menuItem.classList.add('selected');
                 
                 if (item.type === 'toggle') {
                     menuItem.classList.add('toggle');
-                    menuItem.innerHTML = `
-                        <span class="menu-item-text">${item.text}</span>
-                        <div class="toggle-switch ${item.state ? 'active' : ''}" onclick="toggleFeature('${item.id}', event)" data-toggle-id="${item.id}"></div>
-                    `;
+                    menuItem.innerHTML = '<span class="menu-item-text">' + item.text + '</span>' +
+                        '<div class="toggle-switch ' + (item.state ? 'active' : '') + '" onclick="toggleFeature(\'' + item.id + '\', event)" data-toggle-id="' + item.id + '"></div>';
                 } else {
-                    menuItem.innerHTML = `
-                        <span class="menu-item-text">${item.text}</span>
-                        <span class="menu-item-arrow">${item.arrow}</span>
-                    `;
+                    menuItem.innerHTML = '<span class="menu-item-text">' + item.text + '</span>' +
+                        '<span class="menu-item-arrow">' + item.arrow + '</span>';
                 }
                 
-                // Add hover event for player items
+                // Add hover events for player items
                 if (item.type === 'player') {
-                    menuItem.addEventListener('mouseenter', () => {
-                        showPlayerInfo(item);
-                    });
-                    menuItem.addEventListener('mouseleave', () => {
-                        hidePlayerInfo();
-                    });
+                    (function(currentItem) {
+                        menuItem.addEventListener('mouseenter', function() {
+                            showPlayerInfo(currentItem);
+                        });
+                        menuItem.addEventListener('mouseleave', function() {
+                            hidePlayerInfo();
+                        });
+                    })(item);
                 }
                 
-                menuItem.onclick = () => selectItem(item.id, item.type, index);
+                // Add click handler
+                (function(currentId, currentType, currentIndex) {
+                    menuItem.onclick = function() {
+                        selectItem(currentId, currentType, currentIndex);
+                    };
+                })(item.id, item.type, i);
+                
                 container.appendChild(menuItem);
-            });
+            }
             
             // Reset scroll and selection
             selectedIndex = 0;
@@ -1014,23 +1040,17 @@
         }
         
         function updateScrollbarVisibility() {
-            const menuItems = document.querySelectorAll('.menu-item');
-            const scrollbarContainer = document.querySelector('.scrollbar-container');
-            const visibleItems = 8;
-            const itemHeight = 37;
+            var menuItems = document.querySelectorAll('.menu-item');
+            var scrollbarContainer = document.querySelector('.scrollbar-container');
+            var visibleItems = 8;
+            var itemHeight = 37;
             
-            // Calculate actual height needed based on number of items
-            const actualItemCount = menuItems.length;
-            const maxDisplayItems = Math.min(actualItemCount, visibleItems);
-            const containerHeight = maxDisplayItems * itemHeight;
+            var actualItemCount = menuItems.length;
+            var maxDisplayItems = Math.min(actualItemCount, visibleItems);
+            var containerHeight = maxDisplayItems * itemHeight;
             
-            // Update scrollbar container height
             scrollbarContainer.style.height = containerHeight + 'px';
-            
-            // Update menu body height
             document.querySelector('.menu-body').style.height = containerHeight + 'px';
-            
-            // Always show scrollbar as requested, but resize it properly
             scrollbarContainer.classList.add('visible');
         }
         
@@ -1051,94 +1071,102 @@
                     showThemeSelector();
                     return;
                 }
-                console.log(`Action triggered: ${id}`);
-                showNotification(`${menuData[currentMenu].items[index].text}`);
-                // In FiveM: TriggerEvent('menu:action', id)
+                console.log('Action triggered: ' + id);
+                showNotification(menuData[currentMenu].items[index].text);
             } else if (type === 'toggle') {
-                // Allow Enter key to toggle switches
-                const menu = menuData[currentMenu];
-                const item = menu.items[index];
+                var menu = menuData[currentMenu];
+                var item = menu.items[index];
                 item.state = !item.state;
                 
-                // Find the correct toggle switch using data attribute
-                const toggleSwitches = document.querySelectorAll('.toggle-switch');
-                let correctToggle = null;
+                var toggleSwitches = document.querySelectorAll('.toggle-switch');
+                var correctToggle = null;
                 
-                toggleSwitches.forEach(toggle => {
-                    if (toggle.getAttribute('data-toggle-id') === item.id) {
-                        correctToggle = toggle;
+                for (var i = 0; i < toggleSwitches.length; i++) {
+                    if (toggleSwitches[i].getAttribute('data-toggle-id') === item.id) {
+                        correctToggle = toggleSwitches[i];
+                        break;
                     }
-                });
+                }
                 
                 if (correctToggle) {
-                    correctToggle.classList.toggle('active', item.state);
                     if (item.state) {
+                        correctToggle.classList.add('active');
                         correctToggle.style.boxShadow = '0 0 10px rgba(59, 130, 246, 0.5)';
                     } else {
+                        correctToggle.classList.remove('active');
                         correctToggle.style.boxShadow = 'none';
                     }
                 }
                 
-                showNotification(`${item.text} ${item.state ? 'Enabled' : 'Disabled'}`);
-                console.log(`Toggle ${id}: ${item.state ? 'ON' : 'OFF'}`);
+                showNotification(item.text + ' ' + (item.state ? 'Enabled' : 'Disabled'));
+                console.log('Toggle ' + id + ': ' + (item.state ? 'ON' : 'OFF'));
             } else if (type === 'player') {
-                // Player selection action
-                showNotification(`Selected: ${menuData[currentMenu].items[index].text}`);
-                console.log(`Player selected: ${id}`);
+                showNotification('Selected: ' + menuData[currentMenu].items[index].text);
+                console.log('Player selected: ' + id);
             }
         }
         
         function showNotification(message) {
             // Remove existing notification
-            const existing = document.querySelector('.notification');
+            var existing = document.querySelector('.notification');
             if (existing) {
                 existing.remove();
             }
             
             // Create new notification
-            const notification = document.createElement('div');
+            var notification = document.createElement('div');
             notification.className = 'notification';
             notification.textContent = message;
             document.body.appendChild(notification);
             
-            // Show notification with enhanced animation
-            setTimeout(() => notification.classList.add('show'), 10);
+            // Show notification
+            setTimeout(function() {
+                notification.classList.add('show');
+            }, 10);
             
             // Hide after 2.5 seconds
-            setTimeout(() => {
+            setTimeout(function() {
                 notification.classList.add('hide');
-                setTimeout(() => notification.remove(), 500);
+                setTimeout(function() {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 500);
             }, 2500);
         }
         
         function toggleFeature(id, event) {
             event.stopPropagation();
-            const menu = menuData[currentMenu];
-            const item = menu.items.find(i => i.id === id);
+            var menu = menuData[currentMenu];
+            var item = null;
+            
+            for (var i = 0; i < menu.items.length; i++) {
+                if (menu.items[i].id === id) {
+                    item = menu.items[i];
+                    break;
+                }
+            }
+            
             if (item) {
                 item.state = !item.state;
-                const toggleSwitch = event.target;
+                var toggleSwitch = event.target;
                 
                 // Add smooth animation
                 toggleSwitch.style.transform = 'scale(0.95)';
-                setTimeout(() => {
+                setTimeout(function() {
                     toggleSwitch.style.transform = 'scale(1)';
                 }, 100);
                 
-                toggleSwitch.classList.toggle('active', item.state);
-                
-                // Visual feedback
                 if (item.state) {
+                    toggleSwitch.classList.add('active');
                     toggleSwitch.style.boxShadow = '0 0 10px var(--primary-glow)';
                 } else {
+                    toggleSwitch.classList.remove('active');
                     toggleSwitch.style.boxShadow = 'none';
                 }
                 
-                console.log(`Toggle ${id}: ${item.state ? 'ON' : 'OFF'}`);
-                // In FiveM: TriggerEvent('menu:toggle', id, item.state)
-                
-                // Add success feedback
-                showNotification(`${item.text} ${item.state ? 'Enabled' : 'Disabled'}`);
+                console.log('Toggle ' + id + ': ' + (item.state ? 'ON' : 'OFF'));
+                showNotification(item.text + ' ' + (item.state ? 'Enabled' : 'Disabled'));
             }
         }
         
@@ -1150,14 +1178,18 @@
         }
         
         function updateSelection() {
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach((item, index) => {
-                item.classList.toggle('selected', index === selectedIndex);
-            });
+            var menuItems = document.querySelectorAll('.menu-item');
+            for (var i = 0; i < menuItems.length; i++) {
+                if (i === selectedIndex) {
+                    menuItems[i].classList.add('selected');
+                } else {
+                    menuItems[i].classList.remove('selected');
+                }
+            }
             
             // Auto scroll to keep selected item visible
-            const visibleItems = 8;
-            const maxScroll = Math.max(0, menuItems.length - visibleItems);
+            var visibleItems = 8;
+            var maxScroll = Math.max(0, menuItems.length - visibleItems);
             
             if (selectedIndex < scrollOffset) {
                 scrollOffset = selectedIndex;
@@ -1169,218 +1201,75 @@
         }
         
         function updateScroll() {
-            const menuItems = document.querySelectorAll('.menu-item');
-            const menuItemsContainer = document.getElementById('menuItems');
-            const scrollThumb = document.getElementById('scrollThumb');
-            const scrollbarContainer = document.querySelector('.scrollbar-container');
+            var menuItems = document.querySelectorAll('.menu-item');
+            var menuItemsContainer = document.getElementById('menuItems');
+            var scrollThumb = document.getElementById('scrollThumb');
             
-            const itemHeight = 37; // Updated to account for margin
-            const visibleItems = 8;
-            const actualItemCount = menuItems.length;
-            const maxDisplayItems = Math.min(actualItemCount, visibleItems);
-            const containerHeight = maxDisplayItems * itemHeight;
-            const maxScroll = Math.max(0, actualItemCount - visibleItems);
+            var itemHeight = 37;
+            var visibleItems = 8;
+            var actualItemCount = menuItems.length;
+            var maxDisplayItems = Math.min(actualItemCount, visibleItems);
+            var containerHeight = maxDisplayItems * itemHeight;
+            var maxScroll = Math.max(0, actualItemCount - visibleItems);
             
             scrollOffset = Math.max(0, Math.min(maxScroll, scrollOffset));
-            const translateY = -scrollOffset * itemHeight;
-            menuItemsContainer.style.transform = `translateY(${translateY}px)`;
+            var translateY = -scrollOffset * itemHeight;
+            menuItemsContainer.style.transform = 'translateY(' + translateY + 'px)';
             
             // Update scrollbar thumb
             if (maxScroll > 0) {
-                const thumbHeight = Math.max(20, (visibleItems / actualItemCount) * containerHeight);
-                const thumbPosition = (scrollOffset / maxScroll) * (containerHeight - thumbHeight);
+                var thumbHeight = Math.max(20, (visibleItems / actualItemCount) * containerHeight);
+                var thumbPosition = (scrollOffset / maxScroll) * (containerHeight - thumbHeight);
                 scrollThumb.style.height = thumbHeight + 'px';
                 scrollThumb.style.top = thumbPosition + 'px';
             } else {
-                // If no scrolling needed, make thumb fill entire scrollbar
                 scrollThumb.style.height = containerHeight + 'px';
                 scrollThumb.style.top = '0px';
             }
         }
-        
-        // Scrollbar dragging
-        let isDragging = false;
-        let dragStartY = 0;
-        let initialThumbTop = 0;
-        
-        document.getElementById('scrollThumb').addEventListener('mousedown', (e) => {
-            isDragging = true;
-            dragStartY = e.clientY;
-            initialThumbTop = parseFloat(document.getElementById('scrollThumb').style.top) || 0;
-            document.addEventListener('mousemove', handleDrag);
-            document.addEventListener('mouseup', stopDrag);
-            e.preventDefault();
-        });
-        
-        function handleDrag(e) {
-            if (!isDragging) return;
-            
-            const menuItems = document.querySelectorAll('.menu-item');
-            const visibleItems = 8;
-            const actualItemCount = menuItems.length;
-            const maxDisplayItems = Math.min(actualItemCount, visibleItems);
-            const containerHeight = maxDisplayItems * 37;
-            const maxScroll = Math.max(0, actualItemCount - visibleItems);
-            const thumbHeight = Math.max(20, (visibleItems / actualItemCount) * containerHeight);
-            
-            if (maxScroll === 0) return; // No scrolling needed
-            
-            const deltaY = e.clientY - dragStartY;
-            const newTop = initialThumbTop + deltaY;
-            const maxTop = containerHeight - thumbHeight;
-            const clampedTop = Math.max(0, Math.min(maxTop, newTop));
-            
-            const scrollThumb = document.getElementById('scrollThumb');
-            scrollThumb.style.transition = 'none';
-            scrollThumb.style.top = clampedTop + 'px';
-            
-            scrollOffset = Math.round((clampedTop / maxTop) * maxScroll);
-            updateScroll();
+
+        // Event listeners
+        if (document.getElementById('searchInput')) {
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                performSearch(e.target.value);
+            });
         }
-        
-        function stopDrag() {
-            isDragging = false;
-            const scrollThumb = document.getElementById('scrollThumb');
-            scrollThumb.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            document.removeEventListener('mousemove', handleDrag);
-            document.removeEventListener('mouseup', stopDrag);
+
+        if (document.getElementById('backButton')) {
+            document.getElementById('backButton').onclick = function() {
+                goBack();
+            };
         }
-        
-        // Search input event listener
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            performSearch(e.target.value);
-        });
 
         // Close search when clicking outside
-        document.addEventListener('click', (e) => {
-            if (searchActive && !document.getElementById('searchContainer').contains(e.target)) {
+        document.addEventListener('click', function(e) {
+            var searchContainer = document.getElementById('searchContainer');
+            if (searchActive && searchContainer && !searchContainer.contains(e.target)) {
                 hideSearch();
             }
         });
 
         // Close theme modal when clicking outside
-        document.addEventListener('click', (e) => {
-            const themeModal = document.getElementById('themeModal');
-            if (themeModal.classList.contains('visible') && e.target === themeModal) {
+        document.addEventListener('click', function(e) {
+            var themeModal = document.getElementById('themeModal');
+            if (themeModal && themeModal.classList.contains('visible') && e.target === themeModal) {
                 closeThemeSelector();
             }
         });
-        
-        // Keyboard navigation with smooth delay
-        let navigationTimeout;
-        let isNavigating = false;
-        
-        document.addEventListener('keydown', (e) => {
-            // Handle search input
-            if (searchActive) {
-                if (e.key === 'Escape') {
-                    hideSearch();
-                    e.preventDefault();
-                }
-                return; // Let search input handle other keys
-            }
 
-            const menuItems = document.querySelectorAll('.menu-item');
-            
-            // Prevent rapid navigation
-            if (isNavigating && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) return;
-            
-            // Clear existing timeout
-            if (navigationTimeout) {
-                clearTimeout(navigationTimeout);
-            }
-            
-            switch(e.key) {
-                case 'ArrowUp':
-                    isNavigating = true;
-                    selectedIndex = Math.max(0, selectedIndex - 1);
-                    
-                    // Add smooth delay effect matching scrollbar
-                    navigationTimeout = setTimeout(() => {
-                        updateSelection();
-                        updatePageIndicator();
-                        isNavigating = false;
-                    }, 80);
-                    e.preventDefault();
-                    break;
-                case 'ArrowDown':
-                    isNavigating = true;
-                    selectedIndex = Math.min(menuItems.length - 1, selectedIndex + 1);
-                    
-                    // Add smooth delay effect matching scrollbar
-                    navigationTimeout = setTimeout(() => {
-                        updateSelection();
-                        updatePageIndicator();
-                        isNavigating = false;
-                    }, 80);
-                    e.preventDefault();
-                    break;
-                case 'ArrowLeft':
-                    changeTheme('left');
-                    e.preventDefault();
-                    break;
-                case 'ArrowRight':
-                    changeTheme('right');
-                    e.preventDefault();
-                    break;
-                case 'Enter':
-                    if (menuItems[selectedIndex]) {
-                        menuItems[selectedIndex].click();
-                    }
-                    e.preventDefault();
-                    break;
-                case 'Escape':
-                case 'Backspace':
-                    if (currentMenu !== 'main') {
-                        goBack();
-                    } else {
-                        console.log('Menu closed');
-                    }
-                    e.preventDefault();
-                    break;
-            }
-        });
-        
-        // Mouse wheel scrolling
-        document.querySelector('.menu-body').addEventListener('wheel', (e) => {
-            const menuItems = document.querySelectorAll('.menu-item');
-            const visibleItems = 8;
-            const maxScroll = Math.max(0, menuItems.length - visibleItems);
-            
-            if (maxScroll > 0) {
-                const direction = e.deltaY > 0 ? 1 : -1;
-                scrollOffset = Math.max(0, Math.min(maxScroll, scrollOffset + direction));
-                updateScroll();
-            }
-            e.preventDefault();
-        });
-        
-        // Add mouse hover event listener to update page indicator
-        document.addEventListener('DOMContentLoaded', () => {
-            document.addEventListener('mouseover', (e) => {
-                if (e.target.closest('.menu-item')) {
-                    const menuItem = e.target.closest('.menu-item');
-                    const menuItems = document.querySelectorAll('.menu-item');
-                    const hoveredIndex = Array.from(menuItems).indexOf(menuItem);
-                    
-                    if (hoveredIndex !== -1) {
-                        const menu = menuData[currentMenu];
-                        const totalItems = menu.items.length;
-                        const currentPosition = hoveredIndex + 1;
-                        
-                        document.getElementById('pageIndicator').textContent = `${currentPosition} / ${totalItems}`;
-                    }
-                }
-            });
-            
-            // Reset page indicator when mouse leaves menu area
-            document.querySelector('.menu-container').addEventListener('mouseleave', () => {
-                updatePageIndicator();
-            });
-        });
-        
-        // Initialize
-        renderMenu('main');
+        // Test function for DUI communication
+        window.testMenuFunction = function() {
+            console.log('Test function called from DUI!');
+            showNotification('JavaScript is working!');
+            return true;
+        };
+
+        // Initialize menu
+        console.log('Menu script loaded, initializing...');
+        setTimeout(function() {
+            renderMenu('main');
+            console.log('Menu initialized');
+        }, 100);
     </script>
 </body>
 </html>
