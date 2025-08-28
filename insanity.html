@@ -42,9 +42,16 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: transparent;
+            background: #0a0a0a;
             color: #ffffff;
             overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 50px;
+            gap: 8px;
         }
 
         .custom-banner {
@@ -56,9 +63,6 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 15px var(--primary-glow);
-            position: absolute;
-            top: 50px;
-            left: 50px;
         }
 
         .banner-text {
@@ -72,9 +76,6 @@
             display: flex;
             gap: 15px;
             align-items: flex-start;
-            position: absolute;
-            top: 140px;
-            left: 50px;
         }
 
         .menu-layout {
@@ -160,9 +161,6 @@
             padding: 12px;
             display: none;
             margin-bottom: 8px;
-            position: absolute;
-            top: -90px;
-            left: 0;
         }
 
         .search-container.visible {
@@ -471,9 +469,7 @@
             border-radius: 6px;
             width: 300px;
             margin-top: 5px;
-            position: absolute;
-            top: 290px;
-            left: 0;
+            position: relative;
             transition: all 0.3s ease;
         }
 
@@ -641,6 +637,7 @@
         <div class="menu-page" id="pageIndicator">1 / 9</div>
     </div>
 
+    <!-- Theme Selector Modal -->
     <div class="theme-selector-modal" id="themeModal">
         <div class="theme-selector-content">
             <div class="theme-selector-title">Choose Theme Color</div>
@@ -672,6 +669,7 @@
         const themes = ['blue', 'red', 'green'];
         let currentThemeIndex = 0;
         
+        // Menu data structure with proper page numbers and outlined emojis
         const menuData = {
             main: {
                 title: 'Main Menu',
@@ -789,6 +787,7 @@
             }
         };
 
+        // Search functionality
         function getAllSearchableItems() {
             const searchableItems = [];
             
@@ -843,6 +842,7 @@
         function navigateToSearchResult(menuId, itemId) {
             hideSearch();
             
+            // Navigate to the menu containing the item
             if (menuId !== currentMenu) {
                 menuHistory = [];
                 if (menuId !== 'main') {
@@ -852,6 +852,7 @@
                 renderMenu(menuId);
             }
 
+            // Find and select the item
             const menu = menuData[currentMenu];
             const itemIndex = menu.items.findIndex(item => item.id === itemId);
             if (itemIndex !== -1) {
@@ -875,6 +876,7 @@
             searchActive = false;
         }
 
+        // Theme management
         function changeTheme(direction) {
             if (direction === 'left') {
                 currentThemeIndex = (currentThemeIndex - 1 + themes.length) % themes.length;
@@ -890,12 +892,15 @@
             currentTheme = theme;
             currentThemeIndex = themes.indexOf(theme);
             
+            // Remove all theme classes
             document.body.classList.remove('theme-red', 'theme-green');
             
+            // Add selected theme class
             if (theme !== 'blue') {
                 document.body.classList.add(`theme-${theme}`);
             }
             
+            // Update active theme option
             document.querySelectorAll('.theme-option').forEach(option => {
                 option.classList.remove('active');
             });
@@ -912,6 +917,7 @@
             document.getElementById('themeModal').classList.remove('visible');
         }
 
+        // Player info display
         function showPlayerInfo(playerData) {
             const panel = document.getElementById('playerInfoPanel');
             
@@ -926,6 +932,7 @@
             document.getElementById('playerSpeed').textContent = playerData.data.speed;
             document.getElementById('playerFriend').textContent = playerData.data.friend;
             
+            // Update status colors
             const aliveElement = document.getElementById('playerAlive');
             aliveElement.className = 'player-info-value';
             if (playerData.data.alive === 'Alive') {
@@ -941,6 +948,7 @@
             document.getElementById('playerInfoPanel').classList.remove('visible');
         }
 
+        // Update page indicator based on current selection
         function updatePageIndicator() {
             const menu = menuData[currentMenu];
             const totalItems = menu.items.length;
@@ -956,12 +964,14 @@
             
             container.innerHTML = '';
             
+            // Show/hide back button
             if (menuId !== 'main') {
                 backButton.classList.add('visible');
             } else {
                 backButton.classList.remove('visible');
             }
             
+            // Render menu items
             menu.items.forEach((item, index) => {
                 const menuItem = document.createElement('div');
                 menuItem.className = 'menu-item';
@@ -980,6 +990,7 @@
                     `;
                 }
                 
+                // Add hover event for player items
                 if (item.type === 'player') {
                     menuItem.addEventListener('mouseenter', () => {
                         showPlayerInfo(item);
@@ -993,6 +1004,7 @@
                 container.appendChild(menuItem);
             });
             
+            // Reset scroll and selection
             selectedIndex = 0;
             scrollOffset = 0;
             updateScroll();
@@ -1007,14 +1019,18 @@
             const visibleItems = 8;
             const itemHeight = 37;
             
+            // Calculate actual height needed based on number of items
             const actualItemCount = menuItems.length;
             const maxDisplayItems = Math.min(actualItemCount, visibleItems);
             const containerHeight = maxDisplayItems * itemHeight;
             
+            // Update scrollbar container height
             scrollbarContainer.style.height = containerHeight + 'px';
             
+            // Update menu body height
             document.querySelector('.menu-body').style.height = containerHeight + 'px';
             
+            // Always show scrollbar as requested, but resize it properly
             scrollbarContainer.classList.add('visible');
         }
         
@@ -1037,11 +1053,14 @@
                 }
                 console.log(`Action triggered: ${id}`);
                 showNotification(`${menuData[currentMenu].items[index].text}`);
+                // In FiveM: TriggerEvent('menu:action', id)
             } else if (type === 'toggle') {
+                // Allow Enter key to toggle switches
                 const menu = menuData[currentMenu];
                 const item = menu.items[index];
                 item.state = !item.state;
                 
+                // Find the correct toggle switch using data attribute
                 const toggleSwitches = document.querySelectorAll('.toggle-switch');
                 let correctToggle = null;
                 
@@ -1063,24 +1082,29 @@
                 showNotification(`${item.text} ${item.state ? 'Enabled' : 'Disabled'}`);
                 console.log(`Toggle ${id}: ${item.state ? 'ON' : 'OFF'}`);
             } else if (type === 'player') {
+                // Player selection action
                 showNotification(`Selected: ${menuData[currentMenu].items[index].text}`);
                 console.log(`Player selected: ${id}`);
             }
         }
         
         function showNotification(message) {
+            // Remove existing notification
             const existing = document.querySelector('.notification');
             if (existing) {
                 existing.remove();
             }
             
+            // Create new notification
             const notification = document.createElement('div');
             notification.className = 'notification';
             notification.textContent = message;
             document.body.appendChild(notification);
             
+            // Show notification with enhanced animation
             setTimeout(() => notification.classList.add('show'), 10);
             
+            // Hide after 2.5 seconds
             setTimeout(() => {
                 notification.classList.add('hide');
                 setTimeout(() => notification.remove(), 500);
@@ -1095,6 +1119,7 @@
                 item.state = !item.state;
                 const toggleSwitch = event.target;
                 
+                // Add smooth animation
                 toggleSwitch.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     toggleSwitch.style.transform = 'scale(1)';
@@ -1102,6 +1127,7 @@
                 
                 toggleSwitch.classList.toggle('active', item.state);
                 
+                // Visual feedback
                 if (item.state) {
                     toggleSwitch.style.boxShadow = '0 0 10px var(--primary-glow)';
                 } else {
@@ -1109,7 +1135,9 @@
                 }
                 
                 console.log(`Toggle ${id}: ${item.state ? 'ON' : 'OFF'}`);
+                // In FiveM: TriggerEvent('menu:toggle', id, item.state)
                 
+                // Add success feedback
                 showNotification(`${item.text} ${item.state ? 'Enabled' : 'Disabled'}`);
             }
         }
@@ -1127,6 +1155,7 @@
                 item.classList.toggle('selected', index === selectedIndex);
             });
             
+            // Auto scroll to keep selected item visible
             const visibleItems = 8;
             const maxScroll = Math.max(0, menuItems.length - visibleItems);
             
@@ -1145,7 +1174,7 @@
             const scrollThumb = document.getElementById('scrollThumb');
             const scrollbarContainer = document.querySelector('.scrollbar-container');
             
-            const itemHeight = 37;
+            const itemHeight = 37; // Updated to account for margin
             const visibleItems = 8;
             const actualItemCount = menuItems.length;
             const maxDisplayItems = Math.min(actualItemCount, visibleItems);
@@ -1156,17 +1185,20 @@
             const translateY = -scrollOffset * itemHeight;
             menuItemsContainer.style.transform = `translateY(${translateY}px)`;
             
+            // Update scrollbar thumb
             if (maxScroll > 0) {
                 const thumbHeight = Math.max(20, (visibleItems / actualItemCount) * containerHeight);
                 const thumbPosition = (scrollOffset / maxScroll) * (containerHeight - thumbHeight);
                 scrollThumb.style.height = thumbHeight + 'px';
                 scrollThumb.style.top = thumbPosition + 'px';
             } else {
+                // If no scrolling needed, make thumb fill entire scrollbar
                 scrollThumb.style.height = containerHeight + 'px';
                 scrollThumb.style.top = '0px';
             }
         }
         
+        // Scrollbar dragging
         let isDragging = false;
         let dragStartY = 0;
         let initialThumbTop = 0;
@@ -1191,7 +1223,7 @@
             const maxScroll = Math.max(0, actualItemCount - visibleItems);
             const thumbHeight = Math.max(20, (visibleItems / actualItemCount) * containerHeight);
             
-            if (maxScroll === 0) return;
+            if (maxScroll === 0) return; // No scrolling needed
             
             const deltaY = e.clientY - dragStartY;
             const newTop = initialThumbTop + deltaY;
@@ -1214,16 +1246,19 @@
             document.removeEventListener('mouseup', stopDrag);
         }
         
+        // Search input event listener
         document.getElementById('searchInput').addEventListener('input', (e) => {
             performSearch(e.target.value);
         });
 
+        // Close search when clicking outside
         document.addEventListener('click', (e) => {
             if (searchActive && !document.getElementById('searchContainer').contains(e.target)) {
                 hideSearch();
             }
         });
 
+        // Close theme modal when clicking outside
         document.addEventListener('click', (e) => {
             const themeModal = document.getElementById('themeModal');
             if (themeModal.classList.contains('visible') && e.target === themeModal) {
@@ -1231,22 +1266,26 @@
             }
         });
         
+        // Keyboard navigation with smooth delay
         let navigationTimeout;
         let isNavigating = false;
         
         document.addEventListener('keydown', (e) => {
+            // Handle search input
             if (searchActive) {
                 if (e.key === 'Escape') {
                     hideSearch();
                     e.preventDefault();
                 }
-                return;
+                return; // Let search input handle other keys
             }
 
             const menuItems = document.querySelectorAll('.menu-item');
             
+            // Prevent rapid navigation
             if (isNavigating && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) return;
             
+            // Clear existing timeout
             if (navigationTimeout) {
                 clearTimeout(navigationTimeout);
             }
@@ -1256,6 +1295,7 @@
                     isNavigating = true;
                     selectedIndex = Math.max(0, selectedIndex - 1);
                     
+                    // Add smooth delay effect matching scrollbar
                     navigationTimeout = setTimeout(() => {
                         updateSelection();
                         updatePageIndicator();
@@ -1267,6 +1307,7 @@
                     isNavigating = true;
                     selectedIndex = Math.min(menuItems.length - 1, selectedIndex + 1);
                     
+                    // Add smooth delay effect matching scrollbar
                     navigationTimeout = setTimeout(() => {
                         updateSelection();
                         updatePageIndicator();
@@ -1300,6 +1341,7 @@
             }
         });
         
+        // Mouse wheel scrolling
         document.querySelector('.menu-body').addEventListener('wheel', (e) => {
             const menuItems = document.querySelectorAll('.menu-item');
             const visibleItems = 8;
@@ -1313,6 +1355,7 @@
             e.preventDefault();
         });
         
+        // Add mouse hover event listener to update page indicator
         document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('mouseover', (e) => {
                 if (e.target.closest('.menu-item')) {
@@ -1330,11 +1373,13 @@
                 }
             });
             
+            // Reset page indicator when mouse leaves menu area
             document.querySelector('.menu-container').addEventListener('mouseleave', () => {
                 updatePageIndicator();
             });
         });
         
+        // Initialize
         renderMenu('main');
     </script>
 </body>
