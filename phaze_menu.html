@@ -24,7 +24,7 @@ button:hover {background:linear-gradient(135deg,#a94dff,#7c25cc);}
 </div>
 <script>
 function SendMessage(action){
-    // Send message to Lua via Macho
+    // Send action to Lua via Macho
     window.postMessage(JSON.stringify({action: action}));
 }
 </script>
